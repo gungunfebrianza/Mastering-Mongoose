@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // internally
 mongoose.connect('mongodb://localhost:27017/test');
 
-async function run(sadas) {
+async function run() {
   await mongoose.connection.dropDatabase();
   const MyModel = mongoose.model('Test', new mongoose.Schema({ name: String }));
   await MyModel.create({ name: 'Val' });
