@@ -21,22 +21,9 @@ var schema = new Schema({
 // 2. Compile Schema
 var ModelMan = mongooseConnection.model('Man', schema);
 
-var arr = [
-  {
-    name: 'Gun Gun Febrianza',
-    age: 26,
-    wallet: 10000
-  },
-  {
-    name: 'Christa Agung Winarno',
-    age: 42,
-    wallet: 12500
-  }
-];
-
-ModelMan.insertMany(arr)
+ModelMan.find()
   .then(function(doc) {
     console.log(doc);
-    console.log('success Insert!');
+    console.log('Document Fetched!');
   })
   .catch(err => console.log(err));
