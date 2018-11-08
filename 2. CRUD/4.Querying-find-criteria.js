@@ -21,7 +21,7 @@ var schema = new Schema({
 // 2. Compile Schema
 var ModelMan = mongooseConnection.model('Man', schema);
 
-ModelMan.find({ name: 'YumaTOLOL', age: { $gte: 20 } })
+ModelMan.find({ name: 'Gun', age: { $gte: 20 } })
   .then(function(doc) {
     console.log(doc);
     console.log(typeof doc);
