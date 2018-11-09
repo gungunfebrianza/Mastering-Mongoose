@@ -28,8 +28,6 @@ var arrDocuments = [
   { subject: 'Cafe con Leche', author: 'xyz', views: 10 }
 ];
 
-ArticleSchema.index({ subject: 1 }); // schema level
-
 async function run() {
   await ArticleModel.insertMany(arrDocuments)
     .then(function(doc) {
@@ -38,7 +36,7 @@ async function run() {
     })
     .catch(err => console.log(err));
 
-  await ArticleModel.find({ $text: { $search: 'coffee' } })
+  await ArticleModel.find({ $text: { $search: 'bake coffee cake' } })
     .then(function(doc) {
       console.log(doc);
       console.log('Document Fetched!');
