@@ -8,7 +8,7 @@ var mongooseConnection = mongoose.createConnection(
 );
 
 // 1. Create Schema
-var schema = new Schema({
+var UserSchema = new Schema({
   name: 'string',
   age: {
     type: Number,
@@ -19,9 +19,9 @@ var schema = new Schema({
 });
 
 // 2. Compile Schema
-var ModelMan = mongooseConnection.model('Man', schema);
+var ModelUser = mongooseConnection.model('User', UserSchema);
 
-ModelMan.find({ qty: { $ne: 20 } })
+ModelUser.find({ qty: { $ne: 20 } })
   .then(function(doc) {
     console.log(doc);
     console.log(typeof doc);
@@ -31,7 +31,9 @@ ModelMan.find({ qty: { $ne: 20 } })
   })
   .catch(err => console.log(err));
 
-/* This code has been Written By Gun Gun Febrianza
+/* 
+-----------------------------------------------
+This code has been Written By Gun Gun Febrianza
 Need Help ? Advice ? or Ask Question hit me at:
 gungunfebrianza@gmail.com
 
