@@ -25,21 +25,27 @@ var arrDocuments = [
   { category: 'travel', budget: 200, spent: 650 }
 ];
 
-ProductModel.insertMany(arrDocuments)
-  .then(function(doc) {
-    console.log(doc);
-    console.log('success Insert!');
-  })
-  .catch(err => console.log(err));
+async function run() {
+  await ProductModel.insertMany(arrDocuments)
+    .then(function(doc) {
+      console.log(doc);
+      console.log('success Insert!');
+    })
+    .catch(err => console.log(err));
 
-ProductModel.find({ $expr: { $gt: ['$spent', '$budget'] } })
-  .then(function(doc) {
-    console.log(doc);
-    console.log('Document Fetched!');
-  })
-  .catch(err => console.log(err));
+  await ProductModel.find({ $expr: { $gt: ['$spent', '$budget'] } })
+    .then(function(doc) {
+      console.log(doc);
+      console.log('Document Fetched!');
+    })
+    .catch(err => console.log(err));
+}
 
-/* This code has been Written By Gun Gun Febrianza
+run();
+
+/* 
+-----------------------------------------------
+This code has been Written By Gun Gun Febrianza
 Need Help ? Advice ? or Ask Question hit me at:
 gungunfebrianza@gmail.com
 
