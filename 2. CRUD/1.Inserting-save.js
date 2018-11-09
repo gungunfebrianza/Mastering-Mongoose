@@ -8,30 +8,26 @@ var connection = mongoose.createConnection(
 );
 
 // 1. Create Schema
-var schema = new Schema({
-  name: 'string',
-  age: {
-    type: Number,
-    min: [5, 'Too young'],
-    max: 99
-  },
-  wallet: { type: Number, required: [true, 'Add Me Money!'] }
+var ObjectId = mongoose.Schema.Types.ObjectId;
+var ProductSchema = new Schema({
+  _id: ObjectId,
+  item: String,
+  qty: Number
 });
 
 // 2. Compile Schema
-var ModelMan = connection.model('Man', schema);
+var ModelProduct = connection.model('Product', ProductSchema);
 
 // 3. Create Document
-var x = new ModelMan({
-  name: 'YumaTULUL',
-  age: 32,
-  wallet: 2433.87773839
+var Document = new ModelProduct({
+  _id: mongoose.Types.ObjectId(),
+  item: 'Flower',
+  qty: 5
 });
 
 // 4. Async Function
 async function saveDocument() {
-  await x
-    .save()
+  await Document.save()
     .then(function(product) {
       console.log(product);
     })
@@ -42,21 +38,9 @@ async function saveDocument() {
 
 saveDocument();
 
-/* Document.prototype.save()
-Parameters
-
-[options]«Object» options optional options
-[options.safe]«Object» (DEPRECATED) overrides schema's safe option
-[options.validateBeforeSave]«Boolean» set to false to save without validating.
-    [fn]«Function» optional callback
-
-Returns:
-
-«Promise, undefined» Returns undefined if used with callback or a Promise otherwise.
-
-Saves this document. */
-
-/* This code has been Written By Gun Gun Febrianza
+/* 
+-------------------------------------------------
+This code has been Written By Gun Gun Febrianza
 Need Help ? Advice ? or Ask Question hit me at:
 gungunfebrianza@gmail.com
 
