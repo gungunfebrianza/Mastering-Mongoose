@@ -8,27 +8,24 @@ var mongooseConnection = mongoose.createConnection(
 );
 
 // 1. Create Schema
-var schema = new Schema({
-  name: 'string',
-  age: {
-    type: Number,
-    min: [5, 'Too young'],
-    max: 99
-  },
-  wallet: { type: Number, required: [true, 'Add Me Money!'] }
+var ProductSchema = new Schema({
+  item: String,
+  qty: Number
 });
 
 // 2. Compile Schema
-var ModelMan = mongooseConnection.model('Man', schema);
+var ModelProduct = mongooseConnection.model('Product', ProductSchema);
 
-ModelMan.find()
+ModelProduct.find()
   .then(function(doc) {
     console.log(doc);
     console.log('Document Fetched!');
   })
   .catch(err => console.log(err));
 
-/* This code has been Written By Gun Gun Febrianza
+/* 
+-------------------------------------------------
+This code has been Written By Gun Gun Febrianza
 Need Help ? Advice ? or Ask Question hit me at:
 gungunfebrianza@gmail.com
 
