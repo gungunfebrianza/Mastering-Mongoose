@@ -23,21 +23,27 @@ var arrDocuments = [
   { name: 'Drew Williams', classAverage: 93 }
 ];
 
-GradesModel.insertMany(arrDocuments)
-  .then(function(doc) {
-    console.log(doc);
-    console.log('success Insert!');
-  })
-  .catch(err => console.log(err));
+async function run() {
+  await GradesModel.insertMany(arrDocuments)
+    .then(function(doc) {
+      console.log(doc);
+      console.log('success Insert!');
+    })
+    .catch(err => console.log(err));
 
-GradesModel.find({ classAverage: { $type: ['string', 'double'] } })
-  .then(function(doc) {
-    console.log(doc);
-    console.log('Document Fetched!');
-  })
-  .catch(err => console.log(err));
+  await GradesModel.find({ classAverage: { $type: ['string', 'double'] } })
+    .then(function(doc) {
+      console.log(doc);
+      console.log('Document Fetched!');
+    })
+    .catch(err => console.log(err));
+}
 
-/* This code has been Written By Gun Gun Febrianza
+run();
+
+/* 
+-----------------------------------------------
+This code has been Written By Gun Gun Febrianza
 Need Help ? Advice ? or Ask Question hit me at:
 gungunfebrianza@gmail.com
 

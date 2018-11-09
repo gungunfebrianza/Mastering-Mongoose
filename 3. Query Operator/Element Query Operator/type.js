@@ -23,20 +23,26 @@ var arrDocuments = [
   { address: '55 Saturn Ring', zipCode: 88602117 }
 ];
 
-AddressModel.insertMany(arrDocuments)
-  .then(function(doc) {
-    console.log('success Insert!');
-  })
-  .catch(err => console.log(err));
+async function run() {
+  await AddressModel.insertMany(arrDocuments)
+    .then(function(doc) {
+      console.log('success Insert!');
+    })
+    .catch(err => console.log(err));
 
-AddressModel.find({ zipCode: { $type: 'number' } })
-  .then(function(doc) {
-    console.log(doc);
-    console.log('Document Fetched!');
-  })
-  .catch(err => console.log(err));
+  await AddressModel.find({ zipCode: { $type: 'number' } })
+    .then(function(doc) {
+      console.log(doc);
+      console.log('Document Fetched!');
+    })
+    .catch(err => console.log(err));
+}
 
-/* This code has been Written By Gun Gun Febrianza
+run();
+
+/* 
+-----------------------------------------------
+This code has been Written By Gun Gun Febrianza
 Need Help ? Advice ? or Ask Question hit me at:
 gungunfebrianza@gmail.com
 
