@@ -45,6 +45,13 @@ async function run() {
       console.log('Document Fetched!');
     })
     .catch(err => console.log(err));
+
+  await ArrayModel.find({ dim_cm: { $gt: 25 } })
+    .then(function(doc) {
+      console.log(doc);
+      console.log('Document Fetched!');
+    })
+    .catch(err => console.log(err));
 }
 
 run();
