@@ -39,18 +39,11 @@ async function run() {
     })
     .catch(err => console.log(err));
 
-  await ArrayModel.find({ tags: 'red' })
-    .then(function(doc) {
-      console.log(doc);
-      console.log('Document Fetched! - Query an Array for an Element');
-    })
-    .catch(err => console.log(err));
-
-  await ArrayModel.find({ dim_cm: { $gt: 25 } })
+  await ArrayModel.find({ dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } })
     .then(function(doc) {
       console.log(doc);
       console.log(
-        'Document Fetched! - Query All Documents Where the array at least contains one element whose value is greater than 25'
+        'Document Fetched! - Query for an Array Element that Meets Multiple Criteria'
       );
     })
     .catch(err => console.log(err));
