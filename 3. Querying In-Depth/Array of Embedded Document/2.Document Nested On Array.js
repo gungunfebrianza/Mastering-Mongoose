@@ -16,7 +16,7 @@ var ArraySchema = new Schema({
 // 2. Compile Schema
 var ArrayModel = mongooseConnection.model('Array', ArraySchema);
 
-var arrDocuments = [
+/* var arrDocuments = [
   {
     item: 'journal',
     instock: [{ warehouse: 'A', qty: 5 }, { warehouse: 'C', qty: 15 }]
@@ -34,20 +34,21 @@ var arrDocuments = [
     item: 'postcard',
     instock: [{ warehouse: 'B', qty: 15 }, { warehouse: 'C', qty: 35 }]
   }
-];
+]; */
 
 async function run() {
-  await ArrayModel.insertMany(arrDocuments)
+  /*   await ArrayModel.insertMany(arrDocuments)
     .then(function(doc) {
       console.log('success Insert!');
     })
     .catch(err => console.log(err));
-
+ */
   await ArrayModel.find({ instock: { warehouse: 'A', qty: 5 } })
     .then(function(doc) {
       console.log(doc);
+      console.log('Document Fetched!');
       console.log(
-        'Document Fetched! - Query for a Document Nested in an Array'
+        'Selects all documents where an element in the instock array matches the specified document.'
       );
     })
     .catch(err => console.log(err));
