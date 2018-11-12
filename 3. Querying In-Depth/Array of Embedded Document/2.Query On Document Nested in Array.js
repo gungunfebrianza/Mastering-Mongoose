@@ -45,11 +45,11 @@ async function run() {
  */
   await ArrayModel.find({ instock: { warehouse: 'A', qty: 5 } })
     .then(function(doc) {
-      console.log(doc);
+      console.log('------ Result -------');
+      for (let i = 0; i < doc.length; i++) {
+        console.log(doc[i]);
+      }
       console.log('Document Fetched!');
-      console.log(
-        'Selects all documents where an element in the instock array matches the specified document.'
-      );
     })
     .catch(err => console.log(err));
 }
