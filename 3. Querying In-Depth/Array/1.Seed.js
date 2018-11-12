@@ -38,13 +38,6 @@ async function run() {
       console.log('success Insert!');
     })
     .catch(err => console.log(err));
-
-  await ArrayModel.find({ tags: ['red', 'blank'] })
-    .then(function(doc) {
-      console.log(doc);
-      console.log('Document Fetched!');
-    })
-    .catch(err => console.log(err));
 }
 
 run();

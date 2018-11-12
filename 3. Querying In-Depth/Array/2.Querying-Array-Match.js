@@ -32,26 +32,17 @@ var ArrayModel = mongooseConnection.model('Array', ArraySchema);
 ]; */
 
 async function run() {
-  /*   await ArrayModel.insertMany(arrDocuments)
+/*   await ArrayModel.insertMany(arrDocuments)
     .then(function(doc) {
       console.log(doc);
       console.log('success Insert!');
     })
     .catch(err => console.log(err)); */
 
-  await ArrayModel.find({ tags: 'red' })
+  await ArrayModel.find({ tags: ['red', 'blank'] })
     .then(function(doc) {
       console.log(doc);
-      console.log('Document Fetched! - Query an Array for an Element');
-    })
-    .catch(err => console.log(err));
-
-  await ArrayModel.find({ dim_cm: { $gt: 25 } })
-    .then(function(doc) {
-      console.log(doc);
-      console.log(
-        'Document Fetched! - Query All Documents Where the array at least contains one element whose value is greater than 25'
-      );
+      console.log('Document Fetched!');
     })
     .catch(err => console.log(err));
 }
