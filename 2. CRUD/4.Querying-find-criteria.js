@@ -16,12 +16,14 @@ var ProductSchema = new Schema({
 // 2. Compile Schema
 var ModelProduct = mongooseConnection.model('Product', ProductSchema);
 
-ModelProduct.find({ item: 'card', qty: { $gte: 17 } })
+ModelProduct.find({ item: 'Flower', qty: { $gte: 5 } })
   .then(function(doc) {
+    console.log('---Result :');
     console.log(doc);
-    console.log(typeof doc);
-    console.log(doc[0]);
-    console.log(doc[0].name);
+    console.log('---Detail Information :');
+    console.log(`Data Type : ${typeof doc}`);
+    console.log(`Data at Index 0 : ${doc[0]}`);
+    console.log(`Item Name : ${doc[0].item}`);
     console.log('Document Fetched!');
   })
   .catch(err => console.log(err));
