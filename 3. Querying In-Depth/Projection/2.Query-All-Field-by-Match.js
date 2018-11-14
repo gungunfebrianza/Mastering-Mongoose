@@ -10,46 +10,21 @@ var mongooseConnection = mongoose.createConnection(
 // 1. Create Schema
 var ArraySchema = new Schema({
   item: String,
-  qty: Number,
-  size: Schema.Types.Mixed,
-  status: String
+  instock: Schema.Types.Mixed
 });
 
 // 2. Compile Schema
 var ArrayModel = mongooseConnection.model('Projection', ArraySchema);
 
-var arrDocuments = [
-  { item: 'journal', qty: 25, size: { h: 14, w: 21, uom: 'cm' }, status: 'A' },
-  {
-    item: 'notebook',
-    qty: 50,
-    size: { h: 8.5, w: 11, uom: 'in' },
-    status: 'A'
-  },
-  { item: 'paper', qty: 100, size: { h: 8.5, w: 11, uom: 'in' }, status: 'D' },
-  {
-    item: 'planner',
-    qty: 75,
-    size: { h: 22.85, w: 30, uom: 'cm' },
-    status: 'D'
-  },
-  {
-    item: 'postcard',
-    qty: 45,
-    size: { h: 10, w: 15.25, uom: 'cm' },
-    status: 'A'
-  }
-];
-
 async function run() {
-  await ArrayModel.insertMany(arrDocuments)
+  await ArrayModel.find({ status: 'A' })
     .then(function(doc) {
-      console.log(doc);
-      console.log('Insert Success!');
       console.log('------ Result -------');
+      //console.log(doc);
       for (let i = 0; i < doc.length; i++) {
         console.log(doc[i]);
       }
+      console.log('Document Fetched!');
     })
     .catch(err => console.log(err));
 }
