@@ -20,7 +20,7 @@ async function run() {
   await ArrayModel.find({ size: { h: 14, w: 21, uom: 'cm' } })
     .then(function(doc) {
       console.log('------ Result -------');
-      console.log(doc);
+      //console.log(doc);
       for (let i = 0; i < doc.length; i++) {
         console.log(doc[i]);
       }
