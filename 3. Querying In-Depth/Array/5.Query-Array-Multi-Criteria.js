@@ -18,7 +18,7 @@ var ArraySchema = new Schema({
 // 2. Compile Schema
 var ArrayModel = mongooseConnection.model('Array', ArraySchema);
 
-var arrDocuments = [
+/* var arrDocuments = [
   { item: 'journal', qty: 25, tags: ['blank', 'red'], dim_cm: [14, 21] },
   { item: 'notebook', qty: 50, tags: ['red', 'blank'], dim_cm: [14, 21] },
   {
@@ -29,15 +29,15 @@ var arrDocuments = [
   },
   { item: 'planner', qty: 75, tags: ['blank', 'red'], dim_cm: [22.85, 30] },
   { item: 'postcard', qty: 45, tags: ['blue'], dim_cm: [10, 15.25] }
-];
+]; */
 
 async function run() {
-  await ArrayModel.insertMany(arrDocuments)
+/*   await ArrayModel.insertMany(arrDocuments)
     .then(function(doc) {
       console.log(doc);
       console.log('success Insert!');
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)); */
 
   await ArrayModel.find({ dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } })
     .then(function(doc) {
