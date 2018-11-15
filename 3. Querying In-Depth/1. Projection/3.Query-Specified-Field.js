@@ -27,6 +27,18 @@ async function run() {
       console.log('Document Fetched!');
     })
     .catch(err => console.log(err));
+
+  await ArrayModel.find({ status: 'A' }, { item: 1, status: 1, _id: 0 })
+    .then(function(doc) {
+      console.log('------ Result -------');
+      //console.log(doc);
+      for (let i = 0; i < doc.length; i++) {
+        console.log(doc[i]);
+      }
+      console.log('Document Fetched!');
+    })
+    .catch(err => console.log(err));
+  
 }
 
 run();
