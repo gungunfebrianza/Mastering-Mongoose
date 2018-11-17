@@ -8,9 +8,8 @@ var connection = mongoose.createConnection(
 );
 
 // 1. Create Schema
-var ObjectId = mongoose.Schema.Types.ObjectId;
 var ProductSchema = new Schema({
-  _id: ObjectId,
+  _id: Number,
   item: String,
   qty: Number
 });
@@ -20,13 +19,21 @@ var ModelProduct = connection.model('Product', ProductSchema);
 
 // 3. Create Document
 var Document = new ModelProduct({
-  _id: mongoose.Types.ObjectId(),
+  _id: 21,
   item: 'Flower',
   qty: 5
 });
 
 // 4. Async Function
 async function saveDocument() {
+  /*   await ModelProduct.create(Document)
+    .then(function(product) {
+      console.log(product);
+    })
+    .catch(err => {
+      console.log(err);
+    }); */
+
   await Document.save()
     .then(function(product) {
       console.log(product);
