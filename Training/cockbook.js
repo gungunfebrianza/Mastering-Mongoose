@@ -117,6 +117,18 @@ async function run_findByField() {
     .catch(err => console.log(err));
 }
 
+async function run_findByField() {
+  await MamaliaModel.find({ type: 'Anjing' })
+    .then(function(documents) {
+      console.log('Find By Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByObjectProperties() {
   await MamaliaModel.find({ 'characteristic.weight': 20 })
     .then(function(documents) {
@@ -191,10 +203,17 @@ async function run_findByRangeField() {
 
 // run_create();
 // run_insertMany();
+
+/* Find parameter :
+db.collection.find(query, projection); */
+
 // run_findByField();
 // run_findByObjectProperties();
 // run_findByRegex();
-run_findByRegexWithSpecificField();
+// run_findByRegexWithSpecificField();
 // run_findByGreaterThan();
 // run_findByLowerThan();
 // run_findByRangeField();
+
+/* Find parameter :
+db.collection.find(query, projection); */
