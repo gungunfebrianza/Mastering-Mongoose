@@ -129,6 +129,18 @@ async function run_findByObjectProperties() {
     .catch(err => console.log(err));
 }
 
+async function run_findByRegex() {
+  await MamaliaModel.find({ name: /rista/i })
+    .then(function(documents) {
+      console.log('Find By Regex Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByGreaterThan() {
   await MamaliaModel.find({ type: 'Anjing', age: { $gte: 12 } })
     .then(function(documents) {
@@ -142,7 +154,7 @@ async function run_findByGreaterThan() {
 }
 
 async function run_findByLowerThan() {
-  await MamaliaModel.find({ type: 'Anjing', age: { $gte: 12 } })
+  await MamaliaModel.find({ type: 'Anjing', age: { $lte: 12 } })
     .then(function(documents) {
       console.log('Find By Lower Than Properties Success!');
       console.log('------ Result -------');
@@ -169,6 +181,7 @@ async function run_findByRangeField() {
 // run_insertMany();
 // run_findByField();
 // run_findByObjectProperties();
+run_findByRegex();
 // run_findByGreaterThan();
-run_findByLowerThan();
+// run_findByLowerThan();
 // run_findByRangeField();
