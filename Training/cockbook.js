@@ -129,7 +129,20 @@ async function run_findByObjectProperties() {
     .catch(err => console.log(err));
 }
 
+async function run_findByRangeField() {
+  await MamaliaModel.find({ age: { $gt: 10, $lt: 22 } })
+    .then(function(documents) {
+      console.log('Find By Object Properties Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 // run_create();
 // run_insertMany();
 // run_findByField();
-run_findByObjectProperties();
+// run_findByObjectProperties();
+run_findByRangeField();
