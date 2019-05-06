@@ -117,6 +117,18 @@ async function run_findByField() {
     .catch(err => console.log(err));
 }
 
+async function run_findByFieldGetSpecificField() {
+  await MamaliaModel.find({ type: 'Anjing' }, 'name age')
+    .then(function(documents) {
+      console.log('Find By Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByField() {
   await MamaliaModel.find({ type: 'Anjing' })
     .then(function(documents) {
@@ -208,6 +220,7 @@ async function run_findByRangeField() {
 db.collection.find(query, projection); */
 
 // run_findByField();
+run_findByFieldGetSpecificField();
 // run_findByObjectProperties();
 // run_findByRegex();
 // run_findByRegexWithSpecificField();
