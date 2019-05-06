@@ -105,10 +105,22 @@ async function run_insertMany() {
     .catch(err => console.log(err));
 }
 
-async function run_find() {
-  await MamaliaModel.find({ name: 'Matheo' })
+async function run_findByField() {
+  await MamaliaModel.find({ type: 'Anjing' })
     .then(function(documents) {
-      console.log('Find Success!');
+      console.log('Find By Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByObjectProperties() {
+  await MamaliaModel.find({ 'characteristic.weight': 20 })
+    .then(function(documents) {
+      console.log('Find By Object Properties Success!');
       console.log('------ Result -------');
       for (let i = 0; i < documents.length; i++) {
         console.log(documents[i]);
@@ -119,4 +131,5 @@ async function run_find() {
 
 // run_create();
 // run_insertMany();
-run_find();
+// run_findByField();
+run_findByObjectProperties();
