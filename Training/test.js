@@ -105,5 +105,18 @@ async function run_insertMany() {
     .catch(err => console.log(err));
 }
 
-run_create();
-run_insertMany();
+async function run_find() {
+  await MamaliaModel.find({ name: 'Matheo' })
+    .then(function(documents) {
+      console.log('Find Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+// run_create();
+// run_insertMany();
+run_find();
