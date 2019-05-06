@@ -72,6 +72,27 @@ var carnivoraDocuments = [
   }
 ];
 
+async function run_create() {
+  await MamaliaModel.create({
+    type: 'Anjing',
+    name: 'Qrista',
+    characteristic: {
+      weight: 20,
+      color: 'Pink',
+      food: ['Human', 'Egg']
+    },
+    age: 12,
+    quantity: 300,
+    live: ['Cave', 'Dungeon']
+  })
+    .then(function(documents) {
+      console.log('Create Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_insertMany() {
   await MamaliaModel.insertMany(carnivoraDocuments)
     .then(function(documents) {
@@ -84,4 +105,5 @@ async function run_insertMany() {
     .catch(err => console.log(err));
 }
 
+run_create();
 run_insertMany();
