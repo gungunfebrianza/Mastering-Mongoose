@@ -105,6 +105,18 @@ async function run_insertMany() {
     .catch(err => console.log(err));
 }
 
+async function run_find() {
+  await MamaliaModel.find()
+    .then(function(documents) {
+      console.log('Find Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByField() {
   await MamaliaModel.find({ type: 'Anjing' })
     .then(function(documents) {
@@ -219,8 +231,9 @@ async function run_findByRangeField() {
 /* Find parameter :
 db.collection.find(query, projection); */
 
+run_find();
 // run_findByField();
-run_findByFieldGetSpecificField();
+// run_findByFieldGetSpecificField();
 // run_findByObjectProperties();
 // run_findByRegex();
 // run_findByRegexWithSpecificField();
