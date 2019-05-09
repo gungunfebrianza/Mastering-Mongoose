@@ -189,18 +189,6 @@ async function run_findByFieldGetSpecificFields() {
     .catch(err => console.log(err));
 }
 
-async function run_findByField() {
-  await MamaliaModel.find({ type: 'Anjing' })
-    .then(function(documents) {
-      console.log('Find By Field Success!');
-      console.log('------ Result -------');
-      for (let i = 0; i < documents.length; i++) {
-        console.log(documents[i]);
-      }
-    })
-    .catch(err => console.log(err));
-}
-
 async function run_findByArrayElement() {
   await MamaliaModel.find({ live: 'Forest' })
     .then(function(documents) {
@@ -227,6 +215,18 @@ async function run_findByArrayElements() {
 
 async function run_findByObjectProperties() {
   await MamaliaModel.find({ 'characteristic.weight': 20 })
+    .then(function(documents) {
+      console.log('Find By Object Properties Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByArrayElementOnObjectOfArray() {
+  await MamaliaModel.find({ 'characteristic.food': { $in: ['Human', 'Egg'] } })
     .then(function(documents) {
       console.log('Find By Object Properties Success!');
       console.log('------ Result -------');
@@ -336,12 +336,13 @@ db.collection.find(query, projection); */
 // run_findByArrayElement(); // {live : 'Forest'} or {live : 'Forest', live : 'Home'}
 // run_findByArrayElements(); //  {live : 'Forest', live : 'Home'}
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
+run_findByArrayElementOnObjectOfArray();
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
 
 // ======[Comparison Operator] ======
 // run_findByEquality(); // { quantity: { $eq: 12000 } } or { age: { $eq: 12000 } }
-run_findByNotEquality(); // { quantity : { $ne: 12000 } }
+// run_findByNotEquality(); // { quantity : { $ne: 12000 } }
 // run_findByGreaterThanOrEqual(); // { type: 'Anjing', age: { $gte: 12 } }
 // run_findByLowerThanOrEqual(); // { type: 'Anjing', age: { $lte: 12 } }
 // run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
