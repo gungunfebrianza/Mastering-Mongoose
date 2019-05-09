@@ -201,6 +201,18 @@ async function run_findByField() {
     .catch(err => console.log(err));
 }
 
+async function run_findByArrayElement() {
+  await MamaliaModel.find({ live: 'Forest' })
+    .then(function(documents) {
+      console.log('Find By Object Properties Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByObjectProperties() {
   await MamaliaModel.find({ 'characteristic.weight': 20 })
     .then(function(documents) {
@@ -297,12 +309,13 @@ db.collection.find(query, projection); */
 // run_findByFields(); // { type: 'Harimau', age: 24 }
 // run_findByFieldGetSpecificField(); // { type: 'Anjing' }, 'name age'
 // run_findByFieldGetSpecificFields(); // { type: 'Anjing' }, { name: 1, age: 1 }
+run_findByArrayElement(); // {live : 'Forest'}
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
 
 // ======[Comparison Operator] ======
-run_findByEquality(); // { quantity: { $eq: 12000 } } or { age: { $eq: 24 } }
+// run_findByEquality(); // { quantity: { $eq: 12000 } } or { age: { $eq: 12000 } }
 // run_findByGreaterThan(); // { type: 'Anjing', age: { $gte: 12 } }
 // run_findByLowerThan(); // { type: 'Anjing', age: { $lte: 12 } }
 // run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
