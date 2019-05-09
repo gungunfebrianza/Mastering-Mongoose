@@ -333,6 +333,18 @@ async function run_findByRangeField() {
     .catch(err => console.log(err));
 }
 
+async function run_findByAndOperator() {
+  await MamaliaModel.find({ $and: [{ type: 'Anjing', age: { $eq: 15 } }] })
+    .then(function(documents) {
+      console.log('Find By Range Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 // run_create();
 // run_insertMany();
 
@@ -348,8 +360,8 @@ db.collection.find(query, projection); */
 // run_findByArrayElement(); // {live : 'Forest'} or {live : 'Forest', live : 'Home'}
 // run_findByArrayElements(); //  {live : 'Forest', live : 'Home'}
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
-run_findByArrayElementOnObjectOfArray();
-// run_findByArrayElementsOnObjectOfArray();
+// run_findByArrayElementOnObjectOfArray();
+// run_findByArrayElementsOnObjectOfArray(); // { 'characteristic.food': { $in: ['Human', 'Egg'] } }
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
 
@@ -359,3 +371,6 @@ run_findByArrayElementOnObjectOfArray();
 // run_findByGreaterThanOrEqual(); // { type: 'Anjing', age: { $gte: 12 } }
 // run_findByLowerThanOrEqual(); // { type: 'Anjing', age: { $lte: 12 } }
 // run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
+
+// ======[Logical Operator] ======
+run_findByAndOperator();
