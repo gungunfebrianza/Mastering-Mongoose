@@ -177,6 +177,18 @@ async function run_findByFieldGetSpecificField() {
     .catch(err => console.log(err));
 }
 
+async function run_findByFieldGetSpecificFields() {
+  await MamaliaModel.find({ type: 'Anjing' }, { name: 1, age: 1 })
+    .then(function(documents) {
+      console.log('Find By Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByField() {
   await MamaliaModel.find({ type: 'Anjing' })
     .then(function(documents) {
@@ -217,6 +229,18 @@ async function run_findByRegexWithSpecificField() {
   await MamaliaModel.find({ name: /rista/i }, 'type name')
     .then(function(documents) {
       console.log('Find By Regex Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByEquality() {
+  await MamaliaModel.find({ quantity: { $eq: 12000 } })
+    .then(function(documents) {
+      console.log('Find By Greater Than Properties Success!');
       console.log('------ Result -------');
       for (let i = 0; i < documents.length; i++) {
         console.log(documents[i]);
@@ -268,13 +292,17 @@ async function run_findByRangeField() {
 db.collection.find(query, projection); */
 
 // run_find();
-run_findById();
+// run_findById(); // { _id: '5cd06dd4c20128271d336f00' }
 // run_findByField(); // { type: 'Anjing' }
 // run_findByFields(); // { type: 'Harimau', age: 24 }
 // run_findByFieldGetSpecificField(); // { type: 'Anjing' }, 'name age'
+// run_findByFieldGetSpecificFields(); // { type: 'Anjing' }, { name: 1, age: 1 }
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
+
+// ======[Comparison Operator] ======
+run_findByEquality(); // { quantity: { $eq: 12000 } } or { age: { $eq: 24 } }
 // run_findByGreaterThan(); // { type: 'Anjing', age: { $gte: 12 } }
 // run_findByLowerThan(); // { type: 'Anjing', age: { $lte: 12 } }
 // run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
