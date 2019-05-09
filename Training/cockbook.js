@@ -273,6 +273,18 @@ async function run_findByEquality() {
     .catch(err => console.log(err));
 }
 
+async function run_findByNotEquality() {
+  await MamaliaModel.find({ quantity: { $ne: 12000 } })
+    .then(function(documents) {
+      console.log('Find By Greater Than Properties Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByGreaterThanOrEqual() {
   await MamaliaModel.find({ type: 'Anjing', age: { $gte: 12 } })
     .then(function(documents) {
@@ -329,6 +341,7 @@ db.collection.find(query, projection); */
 
 // ======[Comparison Operator] ======
 // run_findByEquality(); // { quantity: { $eq: 12000 } } or { age: { $eq: 12000 } }
-// run_findByGreaterThan(); // { type: 'Anjing', age: { $gte: 12 } }
+run_findByNotEquality(); // { quantity : { $ne: 12000 } }
+// run_findByGreaterThanOrEqual(); // { type: 'Anjing', age: { $gte: 12 } }
 // run_findByLowerThanOrEqual(); // { type: 'Anjing', age: { $lte: 12 } }
 // run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
