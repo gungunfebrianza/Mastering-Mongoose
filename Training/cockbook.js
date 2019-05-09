@@ -129,6 +129,18 @@ async function run_find() {
     .catch(err => console.log(err));
 }
 
+async function run_findById() {
+  await MamaliaModel.find({ _id: '5cd06dd4c20128271d336f00' })
+    .then(function(documents) {
+      console.log('Find By Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 async function run_findByField() {
   await MamaliaModel.find({ type: 'Anjing' })
     .then(function(documents) {
@@ -256,8 +268,9 @@ async function run_findByRangeField() {
 db.collection.find(query, projection); */
 
 // run_find();
+run_findById();
 // run_findByField(); // { type: 'Anjing' }
-run_findByFields(); // { type: 'Harimau', age: 24 }
+// run_findByFields(); // { type: 'Harimau', age: 24 }
 // run_findByFieldGetSpecificField(); // { type: 'Anjing' }, 'name age'
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
 // run_findByRegex(); // { name: /rista/i }
