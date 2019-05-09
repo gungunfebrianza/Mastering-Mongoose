@@ -226,6 +226,18 @@ async function run_findByObjectProperties() {
 }
 
 async function run_findByArrayElementOnObjectOfArray() {
+  await MamaliaModel.find({ 'characteristic.food': { $in: ['Sheep'] } })
+    .then(function(documents) {
+      console.log('Find By Object Properties Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByArrayElementsOnObjectOfArray() {
   await MamaliaModel.find({ 'characteristic.food': { $in: ['Human', 'Egg'] } })
     .then(function(documents) {
       console.log('Find By Object Properties Success!');
@@ -337,6 +349,7 @@ db.collection.find(query, projection); */
 // run_findByArrayElements(); //  {live : 'Forest', live : 'Home'}
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
 run_findByArrayElementOnObjectOfArray();
+// run_findByArrayElementsOnObjectOfArray();
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
 
