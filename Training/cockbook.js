@@ -256,15 +256,15 @@ async function run_findByRangeField() {
 db.collection.find(query, projection); */
 
 // run_find();
-// run_findByField();
-run_findByFields();
-// run_findByFieldGetSpecificField();
-// run_findByObjectProperties();
-// run_findByRegex();
-// run_findByRegexWithSpecificField();
-// run_findByGreaterThan();
-// run_findByLowerThan();
-// run_findByRangeField();
+// run_findByField(); // { type: 'Anjing' }
+run_findByFields(); // { type: 'Harimau', age: 24 }
+// run_findByFieldGetSpecificField(); // { type: 'Anjing' }, 'name age'
+// run_findByObjectProperties(); // { 'characteristic.weight': 20 }
+// run_findByRegex(); // { name: /rista/i }
+// run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
+// run_findByGreaterThan(); // { type: 'Anjing', age: { $gte: 12 } }
+// run_findByLowerThan(); // { type: 'Anjing', age: { $lte: 12 } }
+// run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
 
 /* Find parameter :
 db.collection.find(query, projection); */
