@@ -309,7 +309,7 @@ db.collection.find(query, projection); */
 // run_findByFields(); // { type: 'Harimau', age: 24 }
 // run_findByFieldGetSpecificField(); // { type: 'Anjing' }, 'name age'
 // run_findByFieldGetSpecificFields(); // { type: 'Anjing' }, { name: 1, age: 1 }
-run_findByArrayElement(); // {live : 'Forest'}
+run_findByArrayElement(); // {live : 'Forest'} or {live : 'Forest', live : 'Home'}
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
