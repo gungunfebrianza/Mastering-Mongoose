@@ -47,6 +47,18 @@ var carnivoraDocuments = [
     live: ['River', 'Desert']
   },
   {
+    type: 'Harimau',
+    name: 'Shim',
+    characteristic: {
+      weight: 250,
+      color: 'Yellow & Black',
+      food: ['Monkey', 'Sheep']
+    },
+    age: 24,
+    quantity: 2000,
+    live: ['River', 'Desert']
+  },
+  {
     type: 'Anjing',
     name: 'Krista',
     characteristic: {
@@ -119,6 +131,18 @@ async function run_find() {
 
 async function run_findByField() {
   await MamaliaModel.find({ type: 'Anjing' })
+    .then(function(documents) {
+      console.log('Find By Field Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByFields() {
+  await MamaliaModel.find({ type: 'Harimau', age: 24 })
     .then(function(documents) {
       console.log('Find By Field Success!');
       console.log('------ Result -------');
@@ -231,8 +255,9 @@ async function run_findByRangeField() {
 /* Find parameter :
 db.collection.find(query, projection); */
 
-run_find();
+// run_find();
 // run_findByField();
+run_findByFields();
 // run_findByFieldGetSpecificField();
 // run_findByObjectProperties();
 // run_findByRegex();
