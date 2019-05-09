@@ -204,7 +204,19 @@ async function run_findByField() {
 async function run_findByArrayElement() {
   await MamaliaModel.find({ live: 'Forest' })
     .then(function(documents) {
-      console.log('Find By Object Properties Success!');
+      console.log('Find By Array Element Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByArrayElements() {
+  await MamaliaModel.find({ live: 'Forest', live: 'Home' })
+    .then(function(documents) {
+      console.log('Find By Array Elements Success!');
       console.log('------ Result -------');
       for (let i = 0; i < documents.length; i++) {
         console.log(documents[i]);
@@ -309,7 +321,8 @@ db.collection.find(query, projection); */
 // run_findByFields(); // { type: 'Harimau', age: 24 }
 // run_findByFieldGetSpecificField(); // { type: 'Anjing' }, 'name age'
 // run_findByFieldGetSpecificFields(); // { type: 'Anjing' }, { name: 1, age: 1 }
-run_findByArrayElement(); // {live : 'Forest'} or {live : 'Forest', live : 'Home'}
+// run_findByArrayElement(); // {live : 'Forest'} or {live : 'Forest', live : 'Home'}
+run_findByArrayElements(); //  {live : 'Forest', live : 'Home'}
 // run_findByObjectProperties(); // { 'characteristic.weight': 20 }
 // run_findByRegex(); // { name: /rista/i }
 // run_findByRegexWithSpecificField(); // { name: /rista/i }, 'type name'
