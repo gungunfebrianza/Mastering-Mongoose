@@ -382,16 +382,14 @@ async function run_findFieldByExistOperator() {
 
 async function run_updateOne() {
   await MamaliaModel.updateOne(
-    { name: 'Max' },
     { name: 'Maximum' },
+    { name: 'Max' },
     { new: true }
   )
     .then(documents => {
       console.log('Update One Success!');
       console.log('------ Result -------');
-      for (let i = 0; i < documents.length; i++) {
-        console.log(documents[i]);
-      }
+      return console.log(documents);
     })
     .catch();
 }
