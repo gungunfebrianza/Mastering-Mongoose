@@ -361,8 +361,9 @@ async function run_findByOrOperator() {
 }
 
 async function run_findFieldByExistOperator() {
-  //Find by Field { type: { $exists: true } }
-  //Find by Field with Value  type: { $exists: true, $eq: 'Harimau'}
+  //Find Documents By Field { type: { $exists: true } }
+  //Find Documents By Field with Value  type: { $exists: true, $eq: 'Harimau'}
+  //Find Documents That Has not Have Field Type { type: { $exists: false } }
   await MamaliaModel.find({
     type: {
       $exists: true,
