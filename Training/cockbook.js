@@ -380,6 +380,25 @@ async function run_findFieldByExistOperator() {
     .catch(err => console.log(err));
 }
 
+async function run_updateOne() {
+  await MamaliaModel.updateOne(
+    { name: 'Max' },
+    { name: 'Maximum' },
+    { new: true }
+  )
+    .then(documents => {
+      console.log('Update One Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch();
+}
+
+/* Insert parameter :
+ */
+
 // run_create();
 // run_insertMany();
 
@@ -415,4 +434,9 @@ db.collection.find(query, projection); */
 // run_findByOrOperator();
 
 // ======[Element Operator] ======
-run_findFieldByExistOperator();
+// run_findFieldByExistOperator();
+
+/* Update parameter :
+db.collection.updateOne(filter, update, options); */
+
+run_updateOne();
