@@ -360,8 +360,8 @@ async function run_findByOrOperator() {
     .catch(err => console.log(err));
 }
 
-async function run_findByExistOperator() {
-  await MamaliaModel.find({ type: 'Harimau' })
+async function run_findFieldByExistOperator() {
+  await MamaliaModel.find({ type: { $exists: true } })
     .then(function(documents) {
       console.log('Find By Or Operator Success!');
       console.log('------ Result -------');
@@ -407,4 +407,4 @@ db.collection.find(query, projection); */
 // run_findByOrOperator();
 
 // ======[Element Operator] ======
-run_findByExistOperator();
+run_findFieldByExistOperator();
