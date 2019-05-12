@@ -360,6 +360,18 @@ async function run_findByOrOperator() {
     .catch(err => console.log(err));
 }
 
+async function run_findByExistOperator() {
+  await MamaliaModel.find({ type: 'Harimau' })
+    .then(function(documents) {
+      console.log('Find By Or Operator Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
 // run_create();
 // run_insertMany();
 
@@ -392,4 +404,7 @@ db.collection.find(query, projection); */
 // run_findByAndOperator(); // { $and: [{ type: 'Anjing', age: { $eq: 15 } }] }
 
 // === Syntax: { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
-run_findByOrOperator();
+// run_findByOrOperator();
+
+// ======[Element Operator] ======
+run_findByExistOperator();
