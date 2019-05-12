@@ -373,4 +373,5 @@ db.collection.find(query, projection); */
 // run_findByRangeField(); // { age: { $gt: 10, $lt: 22 } }
 
 // ======[Logical Operator] ======
-run_findByAndOperator();
+// === Syntax: { $and: [ { <expression1> }, { <expression2> } , ... , { <expressionN> } ] }
+run_findByAndOperator(); // { $and: [{ type: 'Anjing', age: { $eq: 15 } }] }
