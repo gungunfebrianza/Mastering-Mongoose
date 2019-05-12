@@ -336,7 +336,22 @@ async function run_findByRangeField() {
 async function run_findByAndOperator() {
   await MamaliaModel.find({ $and: [{ type: 'Anjing', age: { $eq: 15 } }] })
     .then(function(documents) {
-      console.log('Find By Range Field Success!');
+      console.log('Find By And Operator Success!');
+      console.log('------ Result -------');
+      for (let i = 0; i < documents.length; i++) {
+        console.log(documents[i]);
+      }
+    })
+    .catch(err => console.log(err));
+}
+
+async function run_findByOrOperator() {
+  // If Both Exist Display Both
+  // If One Exist Display That One
+  // Display The First Row Always
+  await MamaliaModel.find({ $or: [{ age: 24 }, { quantity: 59000 }] })
+    .then(function(documents) {
+      console.log('Find By Or Operator Success!');
       console.log('------ Result -------');
       for (let i = 0; i < documents.length; i++) {
         console.log(documents[i]);
@@ -374,4 +389,7 @@ db.collection.find(query, projection); */
 
 // ======[Logical Operator] ======
 // === Syntax: { $and: [ { <expression1> }, { <expression2> } , ... , { <expressionN> } ] }
-run_findByAndOperator(); // { $and: [{ type: 'Anjing', age: { $eq: 15 } }] }
+// run_findByAndOperator(); // { $and: [{ type: 'Anjing', age: { $eq: 15 } }] }
+
+// === Syntax: { $or: [ { <expression1> }, { <expression2> }, ... , { <expressionN> } ] }
+run_findByOrOperator();
