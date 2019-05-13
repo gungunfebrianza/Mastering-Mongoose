@@ -139,17 +139,35 @@ async function run_updateManyWithSet() {
     });
 }
 
+async function run_updateAddNewField() {
+  await MamaliaModel.updateOne(
+    { name: 'Qrista' },
+    { $set: { age: 27, gender: 'Women' } }
+  )
+    .then(documents => {
+      console.log('Update Add New Field With Set Operator Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
 //Will replace only first matching document.
-run_updateOne();
+//run_updateOne();
 
 //Will replace all matching documents.
-run_updateMany();
+//run_updateMany();
 
 //Will update only first matching document.
-run_updateOneWithSet();
+//run_updateOneWithSet();
 
 //Will update all matching documents.
 //run_updateManyWithSet();
+
+//If a new field is coming for update, that field will be added to the document.
+run_updateAddNewField(); //limited with schema
