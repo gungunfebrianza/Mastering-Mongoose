@@ -92,11 +92,7 @@ var carnivoraDocuments = [
 ];
 
 async function run_updateOne() {
-  await MamaliaModel.updateOne(
-    { name: 'Max' },
-    { name: 'Maximum' },
-    { new: true }
-  )
+  await MamaliaModel.updateOne({ name: 'Max' }, { name: 'Maximum' })
     .then(documents => {
       console.log('Update One Success!');
       console.log('------ Result -------');
@@ -108,13 +104,21 @@ async function run_updateOne() {
 }
 
 async function run_updateMany() {
-  await MamaliaModel.updateMany(
-    { name: 'Maximum' },
-    { name: 'Max' },
-    { new: true }
-  )
+  await MamaliaModel.updateMany({ name: 'Maximum' }, { name: 'Max' })
     .then(documents => {
       console.log('Update Many Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+async function run_updateWithSet() {
+  await MamaliaModel.updateMany({ name: 'Qrista' }, { $set: { age: 22 } })
+    .then(documents => {
+      console.log('Update With Set Operator Success!');
       console.log('------ Result -------');
       console.log(documents);
     })
@@ -131,3 +135,5 @@ run_updateOne();
 
 //Will replace all matching documents.
 run_updateMany();
+
+run_updateWithSet();
