@@ -115,6 +115,18 @@ async function run_updateMany() {
     });
 }
 
+async function run_updateOneWithSet() {
+  await MamaliaModel.updateOne({ name: 'Qrista' }, { $set: { age: 25 } })
+    .then(documents => {
+      console.log('Update With Set Operator Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 async function run_updateManyWithSet() {
   await MamaliaModel.updateMany({ name: 'Qrista' }, { $set: { age: 22 } })
     .then(documents => {
@@ -137,4 +149,6 @@ run_updateOne();
 run_updateMany();
 
 //Just update a single field of a document. In this case age:
-run_updateManyWithSet();
+run_updateOneWithSet();
+
+//run_updateManyWithSet();
