@@ -93,19 +93,41 @@ var carnivoraDocuments = [
 
 async function run_updateOne() {
   await MamaliaModel.updateOne(
-    { name: 'Maximum' },
     { name: 'Max' },
+    { name: 'Maximum' },
     { new: true }
   )
     .then(documents => {
       console.log('Update One Success!');
       console.log('------ Result -------');
-      return console.log(documents);
+      console.log(documents);
     })
-    .catch();
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+async function run_updateMany() {
+  await MamaliaModel.updateMany(
+    { name: 'Maximum' },
+    { name: 'Max' },
+    { new: true }
+  )
+    .then(documents => {
+      console.log('Update Many Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
 
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
+//Will replace only first matching document.
 run_updateOne();
+
+//Will replace all matching documents.
+run_updateMany();
