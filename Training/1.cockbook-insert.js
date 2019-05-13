@@ -4,8 +4,15 @@ const { Schema } = mongoose;
 //mongoose.connect("mongodb://localhost:27017/training");
 //support multi-connection
 var connection = mongoose.createConnection(
-  'mongodb://localhost:27017/training'
+  'mongodb://localhost:27017/training',
+  { useNewUrlParser: true }
 );
+
+var db = connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('We Are Connected!');
+});
 
 // 1. Create Schema
 var AnimalSchema = new Schema({
