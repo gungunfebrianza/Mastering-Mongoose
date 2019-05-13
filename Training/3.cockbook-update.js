@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 //mongoose.connect("mongodb://localhost:27017/training");
 //support multi-connection
 var connection = mongoose.createConnection(
-  'mongodb://localhost:27017/training'
+  'mongodb://localhost:27017/training',
+  { useNewUrlParser: true }
 );
 
 var db = connection;
