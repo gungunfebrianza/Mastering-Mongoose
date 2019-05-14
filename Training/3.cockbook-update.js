@@ -218,5 +218,5 @@ db.collection.updateOne(filter, update, options); */
 //The $push operator allows you to push a value into an array
 //run_updateWithPushOperator();
 
-//
+//The $pull operator is the opposite of $push
 run_updateWithPullOperator();
