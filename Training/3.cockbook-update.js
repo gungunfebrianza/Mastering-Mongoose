@@ -194,6 +194,20 @@ async function run_updateWithPullOperator() {
     });
 }
 
+async function run_updateWithPopOperator() {
+  // value -1 This will remove the first value from the live array
+  // value 1 This will remove the last value from the live array
+  await MamaliaModel.update({ name: 'Matheo' }, { $pop: { live: -1 } })
+    .then(documents => {
+      console.log('Update With Pop Operator Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
@@ -220,3 +234,6 @@ db.collection.updateOne(filter, update, options); */
 
 //The $pull operator is the opposite of $push
 run_updateWithPullOperator();
+
+//
+run_updateWithPopOperator();
