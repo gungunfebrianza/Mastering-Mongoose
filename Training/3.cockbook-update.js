@@ -187,5 +187,5 @@ db.collection.updateOne(filter, update, options); */
 //If a new field is coming for update, that field will be added to the document.
 run_updateAddNewField(); //limited with schema
 
-//
+//Use the positional operator $
 run_updateWithPositionalOperator()
