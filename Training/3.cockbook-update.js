@@ -202,5 +202,5 @@ db.collection.updateOne(filter, update, options); */
 //Use the positional operator $
 //run_updateWithPositionalOperator();
 
-//
+//The $push operator allows you to push a value into an array
 run_updateWithPushOperator();
