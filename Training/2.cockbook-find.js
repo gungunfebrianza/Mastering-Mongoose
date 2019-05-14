@@ -437,4 +437,4 @@ db.collection.find(query, projection); */
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
-run_updateOne();
+run_insertMany();
