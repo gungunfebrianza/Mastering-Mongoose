@@ -181,6 +181,18 @@ async function run_updateWithPushOperator() {
     });
 }
 
+async function run_updateWithPullOperator() {
+  await MamaliaModel.update({ name: 'Matheo' }, { $pull: { live: 'Forestry' } })
+    .then(documents => {
+      console.log('Update With Pull Operator Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
@@ -203,4 +215,7 @@ db.collection.updateOne(filter, update, options); */
 //run_updateWithPositionalOperator();
 
 //The $push operator allows you to push a value into an array
-run_updateWithPushOperator();
+//run_updateWithPushOperator();
+
+//
+run_updateWithPullOperator();
