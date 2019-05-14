@@ -182,7 +182,8 @@ async function run_updateWithPushOperator() {
 }
 
 async function run_updateWithPullOperator() {
-  await MamaliaModel.update({ name: 'Matheo' }, { $pull: { live: 'Forestry' } })
+  //Behaviour be careful! Will Remove all Forest Element
+  await MamaliaModel.update({ name: 'Matheo' }, { $pull: { live: 'Forest' } })
     .then(documents => {
       console.log('Update With Pull Operator Success!');
       console.log('------ Result -------');
