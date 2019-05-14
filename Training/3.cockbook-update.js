@@ -233,7 +233,7 @@ db.collection.updateOne(filter, update, options); */
 //run_updateWithPushOperator();
 
 //The $pull operator is the opposite of $push
-run_updateWithPullOperator();
+//run_updateWithPullOperator();
 
-//
+//The $pop operator allows you to remove the first or the last value from an array
 run_updateWithPopOperator();
