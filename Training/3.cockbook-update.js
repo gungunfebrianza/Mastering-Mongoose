@@ -154,6 +154,21 @@ async function run_updateAddNewField() {
     });
 }
 
+async function run_updateWithPositionalOperator() {
+  await MamaliaModel.update(
+    { name: 'Matheo', live: 'Forest' },
+    { $set: { 'live.$': 'Mountain' } }
+  )
+    .then(documents => {
+      console.log('Update With Positional Operator Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
@@ -171,3 +186,6 @@ db.collection.updateOne(filter, update, options); */
 
 //If a new field is coming for update, that field will be added to the document.
 run_updateAddNewField(); //limited with schema
+
+//
+run_updateWithPositionalOperator()
