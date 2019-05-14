@@ -169,6 +169,18 @@ async function run_updateWithPositionalOperator() {
     });
 }
 
+async function run_updateWithPushOperator() {
+  await MamaliaModel.update({ name: 'Matheo' }, { $push: { live: 'Forestry' } })
+    .then(documents => {
+      console.log('Update With Push Operator Success!');
+      console.log('------ Result -------');
+      console.log(documents);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
 /* Update parameter :
 db.collection.updateOne(filter, update, options); */
 
@@ -185,7 +197,10 @@ db.collection.updateOne(filter, update, options); */
 //run_updateManyWithSet();
 
 //If a new field is coming for update, that field will be added to the document.
-run_updateAddNewField(); //limited with schema
+//run_updateAddNewField(); //limited with schema
 
 //Use the positional operator $
-run_updateWithPositionalOperator()
+//run_updateWithPositionalOperator();
+
+//
+run_updateWithPushOperator();
